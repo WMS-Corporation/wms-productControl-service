@@ -5,6 +5,7 @@
   "main": "sum.js",
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage",
     "prepare": "husky"
   },
   "author": "",
