@@ -5,7 +5,7 @@
   "main": "sum.js",
   "scripts": {
     "test": "jest",
-    "coverage": "jest --coverage",
+    "coverage": "npm test -- --coverage --collectCoverageFrom=\"./*\"\n",
     "prepare": "husky"
   },
   "author": "",
