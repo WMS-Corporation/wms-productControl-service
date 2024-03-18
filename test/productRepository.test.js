@@ -16,8 +16,8 @@ describe('productRepository testing', () => {
         await collections.products.insertOne(productData)
     });
 
-    it("should create a new product",async () =>{
-        const result=await createProduct(new Product("00002", "Penne", "Pasta", "21-02-2026", "0", "NoRefrigerated"))
+    it("should create a new product", async () => {
+        const result = await createProduct(new Product("00002", "Penne", "Pasta", "21-02-2026", "0", "NoRefrigerated"))
         expect(result).toBeDefined()
     })
 
