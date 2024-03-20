@@ -1,17 +1,18 @@
 const {createProductFromData} = require("../factories/productFactory");
 const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
-const {createProduct, findProducts, findProductById, modifyProduct, deleteProduct
+const {createProduct, findProducts, findProductById, modifyProduct, deleteProduct, generateUniqueTaskCode
 } = require("../repositories/productRepository");
 const {connectDB} = require("../config/dbConnection");
 
 const addProduct = asyncHandler(async(req, res) => {
     const product = createProductFromData(req.body);
-    if (!product.codProduct || !product.name || !product.category || !product.expirationDate || !product.stock || !product.type) {
+    if (!product.name || !product.category || !product.expirationDate || !product.type) {
         return res.status(401).json({ message: 'Invalid product data' })
     }
     const productExists = await findProductById(product.codProduct);
     if(!productExists){
+        product.codProduct = await generateUniqueTaskCode()
         const resultInsert = await createProduct(product)
         if(resultInsert){
             res.status(200).json({ message: 'Creation successful', product: product})
@@ -53,7 +54,7 @@ const updateProductById = asyncHandler(async (req, res) => {
         if(product){
             const productReq = req.body
             const filter = { _codProduct: codProduct }
-            const update = { $set: { _name: productReq.name, _category: productReq.category, _stock: productReq.stock, _expirationDate: productReq.expirationDate, _type: productReq.type } }
+            const update = { $set: { _name: productReq.name, _category: productReq.category, _expirationDate: productReq.expirationDate, _type: productReq.type } }
             const updatedProduct = await modifyProduct(filter, update)
             res.status(200).json(updatedProduct)
         } else{

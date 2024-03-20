@@ -1,10 +1,9 @@
 class Product {
-    constructor(codProduct, name, category, expirationDate, stock, type) {
+    constructor(codProduct, name, category, expirationDate, type) {
         this._codProduct = codProduct
         this._name = name
         this._category = category
         this._expirationDate = expirationDate;
-        this._stock = stock
         this._type = type
     }
 
@@ -38,14 +37,6 @@ class Product {
 
     set expirationDate(value) {
         this._expirationDate = value;
-    }
-
-    get stock() {
-        return this._stock;
-    }
-
-    set stock(value) {
-        this._stock = value;
     }
 
     get type() {

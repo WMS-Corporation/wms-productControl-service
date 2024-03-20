@@ -35,7 +35,6 @@ describe('Product services testing', () => {
                 _name: "",
                 _category: "",
                 _expirationDate: "",
-                _stock: "",
                 _type: ""
             }
         };
@@ -54,7 +53,6 @@ describe('Product services testing', () => {
                 _name: "Fusilli",
                 _category: "Pasta",
                 _expirationDate: "01-02-2026",
-                _stock: "5",
                 _type: "NoRefrigerated"
             }
         };
@@ -72,7 +70,6 @@ describe('Product services testing', () => {
                 _name: "Spaghetti",
                 _category: "Pasta",
                 _expirationDate: "01-01-2025",
-                _stock: "40",
                 _type: "NoRefrigerated"
             }
         };

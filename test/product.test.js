@@ -4,7 +4,7 @@ describe('Product testing', () => {
     let product;
 
     beforeEach(() => {
-        product = new Product('00001', 'Spaghetti', 'Pasta', '01-01-2025', '40', 'NoRefrigerated');
+        product = new Product('00001', 'Spaghetti', 'Pasta', '01-01-2025', 'NoRefrigerated');
     });
 
     it('should return the correct codProduct', () => {
@@ -21,10 +21,6 @@ describe('Product testing', () => {
 
     it('should return the correct expiration date', () => {
         expect(product.expirationDate).toBe('01-01-2025');
-    });
-
-    it('should return the correct stock', () => {
-        expect(product.stock).toBe('40');
     });
 
     it('should return the correct type', () => {
