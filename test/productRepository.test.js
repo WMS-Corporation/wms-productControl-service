@@ -1,5 +1,5 @@
 const {createProduct, findProductById, findProducts, modifyProduct, deleteProduct} = require("../src/repositories/productRepository")
-const {connectDB, collections} = require("../src/config/dbConnection")
+const {connectDB, collections, closeDB} = require("../src/config/dbConnection")
 const {Product} = require("../src/entities/product")
 const path = require("path")
 const fs = require("fs")
@@ -14,6 +14,9 @@ describe('productRepository testing', () => {
         const jsonFilePath = path.resolve(__dirname, './Resources/MongoDB/WMS.Product.json')
         const productData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'))
         await collections.products.insertOne(productData)
+    });
+    afterAll(async () => {
+        await closeDB()
     });
 
     it("should create a new product", async () => {

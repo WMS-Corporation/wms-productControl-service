@@ -5,7 +5,7 @@ const {verifyToken} = require("./authMiddleware");
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send('Hello World');
+    res.status(200).send('OK');
 })
 router.post('/products', verifyToken, addProduct)
 router.get("/products", verifyToken, getProducts)

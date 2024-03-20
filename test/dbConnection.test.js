@@ -22,9 +22,6 @@ describe('Database Connection', () => {
 
     it('should connect to the database and collection', async () => {
         await connectDB(process.env.DB_NAME);
-        const jsonFilePath = path.resolve(__dirname, './Resources/MongoDB/WMS.Product.json')
-        const productData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'))
-        collections.products.insertOne(productData)
         expect(db.databaseName).toBe("WMS");
         expect(collections.products).toBeDefined();
         expect(collections.products.collectionName).toBe(productCollection.collectionName);
