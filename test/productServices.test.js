@@ -17,7 +17,7 @@ const mockResponse = () => {
 describe('Product services testing', () => {
 
     beforeAll(async () => {
-        await connectDB(process.env.DB_NAME_TEST)
+        await connectDB(process.env.DB_NAME_TEST_SERVICES)
     });
 
     beforeEach(async () => {

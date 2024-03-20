@@ -12,7 +12,7 @@ describe('Database Connection', () => {
 
     beforeAll(async () => {
         connection = await MongoClient.connect(process.env.DB_CONN_STRING);
-        db = connection.db(process.env.DB_NAME_TEST);
+        db = connection.db(process.env.DB_NAME);
         productCollection = db.collection(process.env.COLLECTION);
     });
 
@@ -21,11 +21,11 @@ describe('Database Connection', () => {
     });
 
     it('should connect to the database and collection', async () => {
-        await connectDB(process.env.DB_NAME_TEST);
+        await connectDB(process.env.DB_NAME);
         const jsonFilePath = path.resolve(__dirname, './Resources/MongoDB/WMS.Product.json')
         const productData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'))
         collections.products.insertOne(productData)
-        expect(db.databaseName).toBe("WMS_TEST");
+        expect(db.databaseName).toBe("WMS");
         expect(collections.products).toBeDefined();
         expect(collections.products.collectionName).toBe(productCollection.collectionName);
 

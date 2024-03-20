@@ -6,7 +6,7 @@ const fs = require("fs")
 
 describe('productRepository testing', () => {
     beforeAll(async () => {
-        await connectDB(process.env.DB_NAME_TEST)
+        await connectDB(process.env.DB_NAME_TEST_REPOSITORY)
     });
 
     beforeEach(async () => {
