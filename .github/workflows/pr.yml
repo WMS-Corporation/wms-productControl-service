@@ -43,6 +43,7 @@ jobs:
           DB_CONN_STRING: "mongodb://127.0.0.1:27017"
           COLLECTION_USER: "User"
           COLLECTION: "Product"
+          COUNTER_COLLECTION: "Counter"
           JWT_SECRET: "secret_key"
           PORT: 4002
 
