@@ -35,7 +35,6 @@ async function connectDB(dbName) {
     }
 }
 
-
 /**
  * Closes the database connection.
  *
