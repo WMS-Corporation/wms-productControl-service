@@ -41,6 +41,7 @@ jobs:
           DB_NAME_TEST_SERVICES: "WMS_TEST_SERVICES"
           DB_NAME: "WMS"
           DB_CONN_STRING: "mongodb://127.0.0.1:27017"
+          COLLECTION_USER: "User"
           COLLECTION: "Product"
           JWT_SECRET: "secret_key"
           PORT: 4002
