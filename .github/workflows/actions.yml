@@ -45,7 +45,9 @@ jobs:
           DB_CONN_STRING: "mongodb://127.0.0.1:27017"
           COLLECTION: "Product"
           JWT_SECRET: "secret_key"
-          PORT: 3002
+          PORT: 4002
+          COLLECTION_USER: "User"
+          COUNTER_COLLECTION: "Counter"
 
       - name: Run EsLint quality check
         run: npm run eslint
