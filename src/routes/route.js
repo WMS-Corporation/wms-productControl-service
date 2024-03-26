@@ -7,10 +7,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.status(200).send('OK');
 })
-router.post('/products', verifyToken, addProduct)
-router.get("/products", verifyToken, getProducts)
-router.get("/products:codProduct", verifyToken, getProductById)
-router.put("/products:codProduct", verifyToken, updateProductById)
-router.delete("/products:codProduct", verifyToken, deleteProductById)
+router.post('/create', verifyToken, addProduct)
+router.get("/all", verifyToken, getProducts)
+router.get("/:codProduct", verifyToken, getProductById)
+router.put("/:codProduct", verifyToken, updateProductById)
+router.delete("/:codProduct", verifyToken, deleteProductById)
 
 module.exports = router;
