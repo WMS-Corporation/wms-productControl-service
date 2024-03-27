@@ -52,9 +52,8 @@ const updateProductById = asyncHandler(async (req, res) => {
     if(codProduct){
         const product = await findProductById(codProduct)
         if(product){
-            const productReq = req.body
             const filter = { _codProduct: codProduct }
-            const update = { $set: { _name: productReq.name, _category: productReq.category, _expirationDate: productReq.expirationDate, _type: productReq.type } }
+            const update = { $set: req.body }
             const updatedProduct = await modifyProduct(filter, update)
             res.status(200).json(updatedProduct)
         } else{
