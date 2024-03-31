@@ -49,17 +49,39 @@ const getProductById = asyncHandler(async (req, res) => {
 
 const updateProductById = asyncHandler(async (req, res) => {
     const codProduct = req.params.codProduct
+
+    function validateBodyFields(body) {
+        const bodyFields = Object.keys(body);
+        for (let field of bodyFields) {
+            if (!validFields.includes(field)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    const validFields = [
+        "_name",
+        "_category",
+        "_expirationDate",
+        "_type",
+    ];
+
     if(codProduct){
         const product = await findProductById(codProduct)
         if(product){
-            const filter = { _codProduct: codProduct }
-            const update = { $set: req.body }
-            const updatedProduct = await modifyProduct(filter, update)
-            res.status(200).json(updatedProduct)
+            if(!validateBodyFields(req.body)){
+                res.status(401).json({message: 'Product does not contain any of the specified fields or you can not update them.'})
+            } else {
+                const filter = {_codProduct: codProduct}
+                const update = {$set: req.body}
+                const updatedProduct = await modifyProduct(filter, update)
+                res.status(200).json(updatedProduct)
+            }
         } else{
             res.status(401).json({message: 'Product not found'})
         }
-    }else{
+    } else{
         res.status(401).json({message:'Invalid product data'})
     }
 })
