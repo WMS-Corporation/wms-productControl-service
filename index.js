@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 * */
 const productServicePort = process.env.PORT || 4002;
 let corsOptions = {
-    origin: new RegExp(`http:\/\/localhost:${productServicePort}\/.*`),
+    origin: new RegExp(`http:\/\/wms-product:${productServicePort}\/.*`),
 };
 dotenv.config();
 const app = express();
