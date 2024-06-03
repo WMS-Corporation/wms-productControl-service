@@ -2,11 +2,17 @@ const {createProductFromData} = require("../factories/productFactory");
 const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const {createProduct, findProducts, findProductById, modifyProduct, deleteProduct, generateUniqueTaskCode
-} = require("../repositories/productRepository");
-const {connectDB} = require("../config/dbConnection");
+} = require("../repositories/productRepository")
 
 const addProduct = asyncHandler(async(req, res) => {
-    const product = createProductFromData(req.body);
+    let product
+
+    if(verifyBodyFields(req.body, productValidFields)){
+        product = createProductFromData(req.body)
+    } else {
+        return res.status(401).json({ message: 'Invalid request body. Please ensure all required fields are included and in the correct format.' })
+    }
+
     if (!product.name || !product.category || !product.expirationDate || !product.type) {
         return res.status(401).json({ message: 'Invalid product data' })
     }
@@ -101,6 +107,18 @@ const deleteProductById = asyncHandler(async (req, res) => {
         res.status(401).json({message:'Invalid product data'})
     }
 })
+
+const verifyBodyFields = (body, validFields) => {
+    const presentFields = Object.keys(body)
+    return validFields.every(field => presentFields.includes(field))
+}
+
+const productValidFields = [
+    "_name",
+    "_category",
+    "_expirationDate",
+    "_type"
+]
 
 module.exports = {
     addProduct,

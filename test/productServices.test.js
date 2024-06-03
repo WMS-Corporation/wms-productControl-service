@@ -27,7 +27,7 @@ describe('Product services testing', () => {
         await collections.products.insertOne(productData)
     });
 
-        it('it should return 401 if the data are invalid', async () => {
+    it('it should return 401 if the data are invalid', async () => {
         const res = mockResponse()
         const req = {
             body: {
@@ -43,6 +43,21 @@ describe('Product services testing', () => {
 
         expect(res.status).toHaveBeenCalledWith(401)
         expect(res.json).toHaveBeenCalledWith({ message: 'Invalid product data'})
+    });
+
+    it('it should return 401 if the data are missing', async () => {
+        const res = mockResponse()
+        const req = {
+            body: {
+                _codProduct: '00001',
+                _name: ""
+            }
+        };
+
+        await addProduct(req, res)
+
+        expect(res.status).toHaveBeenCalledWith(401)
+        expect(res.json).toHaveBeenCalledWith({ message: 'Invalid request body. Please ensure all required fields are included and in the correct format.'})
     });
 
     it('it should return 200 if creation is successful', async () => {
