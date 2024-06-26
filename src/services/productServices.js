@@ -10,7 +10,7 @@ const addProduct = asyncHandler(async(req, res) => {
     if(verifyBodyFields(req.body, productValidFields)){
         product = createProductFromData(req.body)
     } else {
-        return res.status(401).json({ message: 'Invalid request body. Please ensure all required fields are included and in the correct format.' })
+        return res.status(401).json({ message: 'Please ensure all required fields are included and in the correct format.' })
     }
 
     if (!product.name || !product.category || !product.expirationDate || !product.type) {
