@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/WMS-Corporation/wms-productControl-service/compare/v1.0.0...v1.1.0) (2024-06-30)
+
+
+### Features
+
+* Added the validation of product fields in a body of request. ([f58f736](https://github.com/WMS-Corporation/wms-productControl-service/commit/f58f736492e3a3e6c5d7276a9ff13e45294f7af1))
+
 ## 1.0.0 (2024-05-02)
 
 
